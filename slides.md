@@ -46,7 +46,7 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 # The next level
 
 - Hyperscaler platforms
-- Cattle not pets (see [Monday morning thoughts: a cloud native smell](1))
+- Cattle not pets (see [Monday morning thoughts: a cloud native smell][1])
 - Automation is key
 - Facilities beyond the Cockpit for managing SAP BTP resources
 
@@ -61,5 +61,4 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 - Essential CLI tools
 - APIs that cover SAP BTP core services
 
-
-[1]: [https://blogs.sap.com/2018/04/09/monday-morning-thoughts-a-cloud-native-smell/]
+[1]: https://blogs.sap.com/2018/04/09/monday-morning-thoughts-a-cloud-native-smell/
