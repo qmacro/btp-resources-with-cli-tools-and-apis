@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+declare jsondatafile=binding.json
+
+prop() {
+
+  local propname=$1
+  jq -r ".${propname}" "$jsondatafile"
+
+}
+
+main() {
+
+  curl \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --header 'Accept: application/json' \
+    --user "$(jq -r '"\(.clientid):\(.clientsecret)"' "$jsondatafile")" \
+    --data "grant_type=client_credentials&client_id=$(urlencode "$(prop clientid)")" \
+    --silent \
+    --fail \
+    --url "$(prop url)/oauth/token"
+
+}
+
+main "$@"

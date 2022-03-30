@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+main() {
+
+  local username password region subdomain url
+  username='dj.adams@sap.com'
+  # shellcheck disable=SC2153
+  password="$PASSWORD"
+  [[ -z $password ]] && read -rsp 'Password: ' password
+
+  region=us10
+  subdomain=1cbb5e7etrial
+
+  url="https://service-manager.cfapps.$region.hana.ondemand.com/v1/oauth/$subdomain/token"
+
+  curl \
+    --verbose \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --header 'Accept: application/json' \
+    --data "grant_type=password&username=$username&password=$password" \
+    --url "$url"
+
+}
+
+main "$@"
