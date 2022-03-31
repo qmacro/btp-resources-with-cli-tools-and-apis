@@ -18,3 +18,7 @@ In this session -- which sits at the meeting point between developers, devops, d
 You'll come away with an understanding of what tools are available, what they're used for and where to use them. You'll also learn how to combine them with tools in the wider ecosphere to help you explore, create and manipulate resources on SAP BTP.
 
 If you're interested in levelling up in this space, and embracing command line tools and APIs that give you superpowers for your SAP BTP environment, this session is for you.
+
+## Slides content
+
+The presentation slides are in [slides.md](slides.md) and can be presented with the excellent [terminal slides](https://github.com/maaslalani/slides) tool, or simply read as rendered Markdown.
