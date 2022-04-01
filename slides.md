@@ -126,7 +126,33 @@ And also:
 
 ---
 
-# btp CLI group / object structure
+# btp CLI
 
+* Available for all platforms
+* See also the [BTP Setup Automator][1]
+* Super comfortable and convenient
+* Usage: `btp [OPTIONS] ACTION [GROUP/OBJECT] [PARAMS]`
+
+## Command structure
+
+Like many CLI tools that support a wide array of resources, the btp CLI command structure takes a "verb/noun" approach:
+
+### Verbs
+
+```bash
+btp help all 2>/dev/null | grep -E '^\s+[a-z]+' | awk '{print $1}' | grep -Ev '(login|logout|help)' \
+  | sort -u | paste -sd,
 ```
-```
+
+[1]: https://github.com/SAP-samples/btp-setup-automator
+
+---
+
+# btp CLI Group
+
+# Another slide
+
+hello
+
+
+date
