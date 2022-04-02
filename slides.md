@@ -135,24 +135,50 @@ And also:
 
 ## Command structure
 
-Like many CLI tools that support a wide array of resources, the btp CLI command structure takes a "verb/noun" approach:
+Like many CLI tools that support a wide array of resources, the btp CLI command structure takes a "verb/noun" approach, where _actions_ are performed on _objects_, which are arranged into _groups_.
 
-### Verbs
+### btp CLI actions
 
 ```bash
-btp help all 2>/dev/null | grep -E '^\s+[a-z]+' | awk '{print $1}' | grep -Ev '(login|logout|help)' \
-  | sort -u | paste -sd,
+btp help all 2>/dev/null | grep -E '^\s+[a-z]+' | awk '{print $1}' \
+  | sort -u | paste -sd' ' | fold -s -w $(tput cols)
 ```
 
 [1]: https://github.com/SAP-samples/btp-setup-automator
 
 ---
 
-# btp CLI Group
+# btp CLI groups and objects
 
-# Another slide
+Actions _login_, _logout_, _help_ and _target_ are general.
 
-hello
+The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objects (this info from `btp help all`).
 
+## Accounts group
 
-date
+* available-environment, available-region, directory, entitlement, environment-instance, global-account, label, resource-provider, subaccount, subscription
+
+## Security group
+
+* app, role, role-collection, user
+
+## Services group
+
+* binding, broker, instance, offering, plan, platform
+
+---
+
+# Exploring the btp CLI
+
+## General overview
+
+* `btp get accounts/global-account`
+* `btp get accounts/global-account --show-hierarchy` (aliased as `btphier`)
+
+## Selecting a specific subaccount
+
+* `btp target`
+* `btp list accounts/subaccount`
+* `btp --format json list accounts/subaccount`
+* `btpsubselguid` using `fzf`
+* `btp target --subaccount $(btpsubselguid)`

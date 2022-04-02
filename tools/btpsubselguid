@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Presents list of subaccounts and allows selection.
+# If there's only one subaccount, automatically selects that.
+# Returns the selected subaccount's GUID.
+
+set -euo pipefail
+
+btp --format json list accounts/subaccount 2> /dev/null \
+  | jq -r '.value[] | [.region, .displayName, .guid] | @tsv' \
+  | fzf --layout=reverse --height=50% --with-nth=1,2 --exit-0 --select-1 \
+  | cut -f 3
