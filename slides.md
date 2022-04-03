@@ -203,3 +203,28 @@ The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objec
 ## Putting things together
 
 * `btp assign security/role-collection "$(btp --format json list security/role-collection | jq -r .[].name | fzf)" --to-user qmacro+blue@gmail.com`
+
+---
+
+# Connection between layers
+
+```
+~~~graph-easy --as=boxart
+[Global Account] -> [Subaccounts] -> [Environment Instances]
+~~~
+```
+
+```bash
+btp --format json list accounts/environment-instance # (from getcfapiendpoint)
+```
+
+```json
+{
+  "environmentInstances": [
+    {
+      "labels": "{\"Org Name:\":\"8fe7efd4trial\",\"API Endpoint:\":\"https://api.cf.eu10.hana.ondemand.com\",\"Org ID:\":\"d7706871-d9db-450d-9b99-dfbe23358dc4\"}",
+      "environmentType": "cloudfoundry",
+      ...
+    }
+  ]
+}
