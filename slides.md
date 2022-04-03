@@ -177,8 +177,29 @@ The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objec
 
 ## Selecting a specific subaccount
 
-* `btp target`
+* `btp target --help`
 * `btp list accounts/subaccount`
 * `btp --format json list accounts/subaccount`
-* `btpsubselguid` using `fzf`
+* `btp --format json list accounts/subaccount | jq .`
+* `btp --format json list accounts/subaccount | jq -C . | less -R`
+* `btp --format json list accounts/subaccount | ijq`
+* `btpsubselguid` using `jq` and `fzf`
 * `btp target --subaccount $(btpsubselguid)`
+
+---
+
+# Exploring the btp CLI (cntd)
+
+## Users and role collections
+
+* `btp list security/user`
+* `btp get security/user qmacro+blue@gmail.com`
+* `btp list security/role-collection`
+* `btp --format json list security/role-collection`
+* `btp --format json list security/role-collection | fx`
+* `btp --format json list security/role-collection | jq -r .[].name`
+* `btp --format json list security/role-collection | jq -r .[].name | fzf`
+
+## Putting things together
+
+* `btp assign security/role-collection "$(btp --format json list security/role-collection | jq -r .[].name | fzf)" --to-user qmacro+blue@gmail.com`
