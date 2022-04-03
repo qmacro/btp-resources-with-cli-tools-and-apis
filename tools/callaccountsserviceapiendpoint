@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Simple example of commands to call Accounts Service endpoint (GET)
+
+set -euo pipefail
+
+# shellcheck disable=SC2034
+declare binding="binding.json" token="token.json"
+
+fileprop() {
+
+  local file=${!1}
+  local propname=$2
+  jq -r "${propname}" "$file"
+
+}
+
+main() {
+
+  local endpoint
+  endpoint="${1:?Specify versioned endpoint e.g. /accounts/v1/subaccounts}"
+  endpoint="${endpoint#/}"
+
+  curl \
+    --header "Authorization: Bearer $(fileprop token .access_token)" \
+    --location \
+    --silent \
+    --fail \
+    --url "$(fileprop binding .endpoints.accounts_service_url)/$endpoint"
+
+}
+
+main "$@"

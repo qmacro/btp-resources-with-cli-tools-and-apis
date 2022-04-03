@@ -6,20 +6,47 @@ declare jsondatafile=binding.json
 prop() {
 
   local propname=$1
-  jq -r ".${propname}" "$jsondatafile"
+  jq -r "${propname}" "$jsondatafile"
+
+}
+
+clientcredentials_grant_type() {
+
+  curl \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --header 'Accept: application/json' \
+    --user "$(prop .uaa.clientid):$(prop .uaa.clientsecret)" \
+    --data "grant_type=client_credentials&client_id=$(urlencode "$(prop .uaa.clientid)")" \
+    --silent \
+    --fail \
+    --url "$(prop .uaa.url)/oauth/token"
+
+}
+
+password_grant_type() {
+
+  local username=$1
+  local password=$2
+
+  curl \
+    --header 'Content-Type: application/x-www-form-urlencoded' \
+    --header 'Accept: application/json' \
+    --user "$(prop .uaa.clientid):$(prop .uaa.clientsecret)" \
+    --data "grant_type=password" \
+    --data-urlencode "username=$username" \
+    --data-urlencode "password=$password" \
+    --silent \
+    --fail \
+    --url "$(prop .uaa.url)/oauth/token"
 
 }
 
 main() {
 
-  curl \
-    --header 'Content-Type: application/x-www-form-urlencoded' \
-    --header 'Accept: application/json' \
-    --user "$(jq -r '"\(.clientid):\(.clientsecret)"' "$jsondatafile")" \
-    --data "grant_type=client_credentials&client_id=$(urlencode "$(prop clientid)")" \
-    --silent \
-    --fail \
-    --url "$(prop url)/oauth/token"
+  local username password
+  username="$(pass btp/blue/user)"
+  password="$(pass btp/blue/password)"
+  password_grant_type "$username" "$password"
 
 }
 
