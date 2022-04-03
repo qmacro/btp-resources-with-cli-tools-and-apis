@@ -5,7 +5,7 @@ date: DD MMM YYYY
 paging: "%d / %d"
 ---
 
-# Title
+# Talk
 
 Level up your SAP BTP resource management skills with command line tools and APIs.
 
@@ -309,3 +309,62 @@ _Diagram powered by [ASCIIFlow][1]_
 [1]: https://api.sap.com/api/APIAccountsService/resource
 [2]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/3670474a58c24ac2b082e76cbbd9dc19.html
 [3]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/a508b724bf6d457ca7ac024b8e4b8457.html
+
+---
+
+# SAP Service Manager - overview
+
+Facilitates brokering services across runtimes, based on the open source [Peripli][1]
+
+```
+┌────────────────┐                                  ┌──────────┐
+│ Service Broker ├───┐                          ┌───┤ Platform │
+└────────────────┘   │                          │   └──────────┘
+                     │                          │
+┌────────────────┐   │   ┌─────────────────┐    │   ┌──────────┐
+│ Service Broker ├───┼───┤ Service Manager ├────┼───┤ Platform │
+└────────────────┘   │   └─────────────────┘    │   └──────────┘
+                     │                          │
+┌────────────────┐   │                          │   ┌──────────┐
+│ Service Broker ├───┘                          └───┤ Platform │
+└────────────────┘                                  └──────────┘
+```
+
+Think `cf`'s services facility, but cross-environment, allowing consumption of services from anywhere, anywhere (Cloud Foundry, Kyma / Kubernetes, etc).
+
+[1]: https://peripli.github.io/
+
+---
+
+# SAP Service Manager - interaction
+
+This is itself a service via which one can view & manage service offerings, plans, etc.
+
+## Via the smctl CLI
+
+* Install available from the open source project and [referenced in SAP Help Portal][1]
+* Commands such as `list-platforms`, `register-broker`, `provision`, `update-instance`
+
+## Via the btp CLI
+
+* Service management group objects: binding, broker, instance, offering, plan, platform
+
+## Via the API
+
+* Described in SAP API Business Hub - [Service Manager][2]
+* Documented in SAP Help Portal - [Working with SAP Service Manager APIs][3]
+* Protected via OAuth, requires SAP Service Manager instance with [appropriate plan][4]
+
+
+[1]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/93532bd72117429bb823a46ef2ddd003.html
+[2]: https://api.sap.com/api/APIServiceManagment/overview
+[3]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/4e19b11211fe4ca2a266d3fdd4a72188.html
+[4]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/917a8a7c926444cf99d0230c82db1831.html
+---
+
+# Wrapping up
+
+* The SAP BTP Cockpit provides a great human-centric interface for viewing & managing resources
+* For the next step in cloud, automation, unattended operations, analysis and more, we need more direct access
+* This is provided by tools such as `btp` and augmented by general command line tools like `jq`
+* The API surface area of SAP BTP is wide and rich, offering programmatic access
