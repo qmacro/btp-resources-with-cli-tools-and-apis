@@ -6,6 +6,7 @@ declare IDENTITY=blue
 declare SUBACCOUNT=trial
 declare HERE="${0%/*}"
 declare ROLECOLLECTION="Cloud Connector Administrator"
+declare SERVICEINSTANCE=cis-central
 
 set -euo pipefail
 
@@ -32,6 +33,9 @@ main() {
   CF_PASSWORD="$(pass btp/$IDENTITY/password)"
   cf auth "$username"
   cf target -o "$globalaccount"
+
+  # Remove any existing CIS service instance & keys
+  dsik "$SERVICEINSTANCE"
 }
 
 main "$@"
