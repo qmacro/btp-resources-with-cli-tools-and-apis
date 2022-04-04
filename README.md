@@ -21,4 +21,4 @@ If you're interested in levelling up in this space, and embracing command line t
 
 ## Slides content
 
-The presentation slides are in [slides.md](slides.md) and can be presented with the excellent [terminal slides](https://github.com/maaslalani/slides) tool, or simply read as rendered Markdown.
+The presentation slides are in [slides.md](slides.md) and can be presented with the excellent [terminal slides](https://github.com/maaslalani/slides) tool, or simply read as rendered Markdown. Some diagrams are rendered on the fly via `graph-easy`, others are created with [ASCIIFlow](https://github.com/lewish/asciiflow).
