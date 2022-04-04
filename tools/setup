@@ -11,16 +11,27 @@ set -euo pipefail
 
 main() {
 
-  local cfapi subaccountguid
+  local username subaccountguid globalaccount
+  declare -x CF_PASSWORD
+
+  username="$(pass btp/$IDENTITY/user)"
+  globalaccount="$(pass btp/$IDENTITY/ga)"
+
+  # Log in with btp CLI and target the right subaccount
   btplogin "$IDENTITY"
   subaccountguid="$(btpguid --target $SUBACCOUNT)"
-  cfapi="$("$HERE/getcfapiendpoint" "$subaccountguid")"
-  echo "CF API endpoint is $cfapi"
 
+  # Remove the test role collection from my user
   btp unassign security/role-collection \
     "$ROLECOLLECTION" \
-    --from-user "$(pass btp/$IDENTITY/user)"
+    --from-user "$username"
 
+  # Set the CF API endpoint, log in and target main org
+  cf api "$("$HERE/getcfapiendpoint" "$subaccountguid")"
+  # shellcheck disable=SC2034
+  CF_PASSWORD="$(pass btp/$IDENTITY/password)"
+  cf auth "$username"
+  cf target -o "$globalaccount"
 }
 
 main "$@"
