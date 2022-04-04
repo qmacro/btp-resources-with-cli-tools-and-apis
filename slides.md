@@ -24,20 +24,31 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 ---
 
+# Flow
+
+```
+~~~graph-easy --as=boxart
+[Overview] -> [Resources] -> [CLI tools] -> [APIs] -> [Wrap up] -> [More info]
+[CLI tools] -> [Demo 1]
+[APIs] -> [Demo 2]
+~~~
+```
+
+---
+
 # Setting the scene
 
 - A cloud platform since 2012, known today as SAP BTP
 - Multiple functions and purposes
 - The go-to platform for everything beyond core products
-  - Integrations
-  - Extensions
-  - Messaging
-  - Connectivity
-  - Cloud native developments
-  - Services
+  - Integrations, extensions
+  - Messaging, connectivity
+  - Cloud native developments (apps & services)
   - ... and lots more
 - Large array of offerings - "resources"
 - Our first experience is via the SAP BTP Cockpit
+
+👉 `https://cockpit.hanatrial.ondemand.com/trial/#/globalaccount`
 
 ## Takeaway
 
@@ -51,6 +62,8 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 - Cattle not pets - see [Monday morning thoughts: a cloud native smell][1]
 - Automation is key for the next stages in your cloud journey
 - Facilities beyond the Cockpit for managing SAP BTP resources
+
+👉 `https://cockpit.hanatrial.ondemand.com/trial/#/home/trial`
 
 ## Takeaway
 
@@ -69,18 +82,28 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 # Resources
 
-|Category     |Examples                                             |
-|-------------|-----------------------------------------------------|
-|Structure    |Directories, subaccounts, namespaces, orgs, spaces   |
-|Runtime      |Environments, apps, services, subscriptions          |
-|Security     |Users, roles, role collections                       |
-|Connectivity | Cloud connectors, destinations                      |
-
 (Not an exhaustive list!)
+
+## Structure
+
+* Directories, subaccounts, namespaces, orgs, spaces
+
+## Runtime
+
+* Environments, apps, services, subscriptions
+
+## Security
+
+* Users, roles, role collections
+
+## Connectivity
+* Cloud connectors, destinations
 
 ---
 
 # CLI tools
+
+Platform and runtime specific tools, plus tools to manipulate and explore data
 
 ## Platform and runtime
 
@@ -89,21 +112,23 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 - kubectl [the main Kubernetes command line tool][3]
 - cf      [the Cloud Foundry command line tool][4]
 
-## Exploratory tools
+## Data manipulation and exploration
 
 - jq      [the command line JSON processor][5]
-- ijq     [interactive jq][6]
-- fx      [terminal JSON viewer][7]
-- fzf     [a command line fuzzy finder][8]
+- yq      [the equivalent of jq for YAML][6]
+- ijq     [interactive jq][7]
+- fx      [terminal JSON viewer][8]
+- fzf     [a command line fuzzy finder][9]
 
 [1]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/7c6df2db6332419ea7a862191525377c.html
 [2]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html
 [3]: https://kubernetes.io/docs/reference/kubectl/
 [4]: https://docs.cloudfoundry.org/cf-cli/
 [5]: https://stedolan.github.io/jq/
-[6]: https://sr.ht/~gpanders/ijq/
-[7]: https://github.com/antonmedv/fx
-[8]: https://github.com/junegunn/fzf
+[6]: https://github.com/mikefarah/yq
+[7]: https://sr.ht/~gpanders/ijq/
+[8]: https://github.com/antonmedv/fx
+[9]: https://github.com/junegunn/fzf
 
 ---
 
@@ -177,7 +202,7 @@ The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objec
 
 ## Selecting a specific subaccount
 
-* `btp target --help`
+* `btp target --help` (GUID needed)
 * `btp list accounts/subaccount`
 * `btp --format json list accounts/subaccount`
 * `btp --format json list accounts/subaccount | jq .`
@@ -200,9 +225,11 @@ The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objec
 * `btp --format json list security/role-collection | jq -r .[].name`
 * `btp --format json list security/role-collection | jq -r .[].name | fzf`
 
-## Putting things together
+### Assigning and unassigning a role collection
 
-* `btp assign security/role-collection "$(btp --format json list security/role-collection | jq -r .[].name | fzf)" --to-user qmacro+blue@gmail.com`
+`btp assign security/role-collection "$(btp --format json list security/role-collection | jq -r .[].name | fzf)" --to-user qmacro+blue@gmail.com`
+
+`btp unassign security/role-collection "$(btp --format json get security/user qmacro+blue@gmail.com | jq -r .roleCollections[] | fzf)" --from-user qmacro+blue@gmail.com`
 
 ---
 
@@ -232,13 +259,26 @@ btp --format json list accounts/environment-instance # (from getcfapiendpoint)
 
 ---
 
-# API Package : Core Services for SAP BTP
+# API Packages on SAP API Business Hub
 
 ```
 ~~~graph-easy --as=boxart
 [SAP API Business Hub] -> [API Package] -> [APIs]
 [API Package] -> [Overview]
 [API Package] -> [Documents]
+~~~
+```
+
+---
+
+# API Package : Core Services for SAP BTP
+
+```
+~~~graph-easy --as=boxart
+[API Package] -> [Accounts Service API]
+[API Package] -> [Entitlements Service API]
+[API Package] -> [Events Service API]
+[API Package] -> [...]
 ~~~
 ```
 
@@ -258,6 +298,8 @@ btp --format json list accounts/environment-instance # (from getcfapiendpoint)
 
 Grouped endpoints are described in the [API Reference][1]
 
+👉 `https://api.sap.com/package/SAPCloudPlatformCoreServices/rest`
+
 [1]: https://api.sap.com/api/APIAccountsService/resource
 
 ---
@@ -265,6 +307,7 @@ Grouped endpoints are described in the [API Reference][1]
 # Calling an API protected with OAuth
 
 Service instance binding contains OAuth details. Use those to request an access token, to authenticate the call.
+
 ```
 ┌──────────┐     ┌──────────┐    ┌──────────┐
 │ Service  ├──┬─►│ Instance ├───►│ Binding  │
@@ -278,11 +321,7 @@ Service instance binding contains OAuth details. Use those to request an access 
 ┌──────────┐     ┌──────────┐
 │  Token   ├────►│ API call │
 └──────────┘     └──────────┘
-
 ```
-_Diagram powered by [ASCIIFlow][1]_
-
-[1]: https://github.com/lewish/asciiflow
 
 ---
 
@@ -368,3 +407,35 @@ This is itself a service via which one can view & manage service offerings, plan
 * For the next step in cloud, automation, unattended operations, analysis and more, we need more direct access
 * This is provided by tools such as `btp` and augmented by general command line tools like `jq`
 * The API surface area of SAP BTP is wide and rich, offering programmatic access
+
+---
+
+# Further reading
+
+Blog posts
+
+* [SAP Tech Bytes: btp CLI – installation](https://blogs.sap.com/2021/09/01/sap-tech-bytes-btp-cli-installation/)
+* [SAP Tech Bytes: btp CLI - logging in](https://blogs.sap.com/2021/09/07/sap-tech-bytes-btp-cli-logging-in/)
+* [SAP Tech Bytes: btp CLI - managing configuration](https://blogs.sap.com/2021/09/14/sap-tech-bytes-btp-cli-managing-configuration/)
+* [SAP Tech Bytes: btp CLI - autocompletion](https://blogs.sap.com/2021/09/21/sap-tech-bytes-btp-cli-autocompletion/)
+* [SAP Tech Bytes: btp CLI - new home for configuration](https://blogs.sap.com/2022/02/17/sap-tech-bytes-btp-cli-new-home-for-configuration/)
+* [Getting BTP resource GUIDs with the btp CLI - part 1](https://blogs.sap.com/2021/11/24/getting-btp-resource-guids-with-the-btp-cli-part-1/)
+* [Getting BTP resource GUIDs with the btp CLI - part 2 - JSON and jq](https://blogs.sap.com/2021/12/01/getting-btp-resource-guids-with-the-btp-cli-part-2-json-and-jq/)
+* [Exploring service brokers and service consumption on SAP Business Technology Platform](https://blogs.sap.com/2022/03/08/exploring-service-brokers-and-cf-on-sap-business-technology-platform/)
+* [Embracing JSON and jq](https://qmacro.org/2021/10/29/embracing-jq-and-json/)
+
+---
+
+# Further viewing
+
+Videos from the `Hands-on SAP Dev` [show][1]
+
+* [Getting started with btp, the SAP Business Technology Platform CLI](https://www.youtube.com/watch?v=mhk6Kot-Ays&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=9)
+* [Logging in and configuration with btp, the SAP Business Technology Platform CLI](https://www.youtube.com/watch?v=jN_4J8tmmTo&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=8)
+* [Scripting and JSON output with btp, the SAP Business Technology Platform CLI](https://www.youtube.com/watch?v=xRmHZGk4QCU&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=7)
+* [Let's write a script together with bash, jq, and the btp CLI](https://www.youtube.com/watch?v=mPngw5yZyf8&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=6)
+* [Booting our 2022 live stream series with a review of Developer Keynote btp CLI scripting](https://www.youtube.com/watch?v=1jekfZJ3fTk&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=5)
+* [Developer Keynote btp CLI scripting part 2 - obtaining and parsing JSON output with jq](https://www.youtube.com/watch?v=_tQWo2bzFzE&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=4)
+* [Fun with SAP BTP Cloud Management Service and Core Services APIs](https://www.youtube.com/watch?v=KiPJJHmEbgc&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=3)
+
+[1]: https://blogs.sap.com/2020/11/09/an-overview-of-sap-developers-video-content/#shows
