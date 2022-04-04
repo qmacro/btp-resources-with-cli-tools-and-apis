@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Set everything up ready for the talk
+
+declare IDENTITY=blue
+declare SUBACCOUNT=trial
+declare HERE="${0%/*}"
+declare ROLECOLLECTION="Cloud Connector Administrator"
+
+set -euo pipefail
+
+main() {
+
+  local cfapi subaccountguid
+  btplogin "$IDENTITY"
+  subaccountguid="$(btpguid --target $SUBACCOUNT)"
+  cfapi="$("$HERE/getcfapiendpoint" "$subaccountguid")"
+  echo "CF API endpoint is $cfapi"
+
+  btp unassign security/role-collection \
+    "$ROLECOLLECTION" \
+    --from-user "$(pass btp/$IDENTITY/user)"
+
+}
+
+main "$@"
