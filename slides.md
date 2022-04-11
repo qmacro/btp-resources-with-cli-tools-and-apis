@@ -78,6 +78,12 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 - Essential CLI tools
 - APIs that cover SAP BTP core services
 
+Note:
+
+The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][1]
+
+[1]: https://github.com/qmacro/mastering-sap-2022/
+
 ---
 
 # Resources
@@ -165,8 +171,7 @@ Like many CLI tools that support a wide array of resources, the btp CLI command 
 ### btp CLI actions
 
 ```bash
-btp help all 2>/dev/null | grep -E '^\s+[a-z]+' | awk '{print $1}' \
-  | sort -u | paste -sd' ' | fold -s -w $(tput cols)
+btp help all | grep -E '^\s+[a-z]+' | awk '{print $1}' | sort -u | paste -sd' ' | fold -s -w $(tput cols)
 ```
 
 [1]: https://github.com/SAP-samples/btp-setup-automator
