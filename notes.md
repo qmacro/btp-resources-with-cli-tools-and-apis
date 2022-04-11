@@ -74,3 +74,34 @@ In particular, `ijq` lets us to explore the `jq` language, with which we can use
 ```
 
 We can see another example of some `jq` expressions that are used to extract subaccount details and present them in tab-separated format, in the `btpsubselguid` script. This output is then fed to `fzf` which presents the values for a selection, and then finally `cut` is used to select the third field in the output from that.
+
+## Exploring the btp CLI (cntd)
+
+As we can see, `fx` is also a nice tool to explore JSON output. And with it we can see that the structure of the JSON for the "security/role-collection" resource is an array of objects, one for each role-collection. So we can use a bit of `jq` to extract the role collection names from that structure: `.[].name` (the `-r` option tells `jq` not to try to output JSON, but just raw data). The flat list then can be nicely fed into `fzf`.
+
+The assignment and unassignment of role-collections to and from users can also be done with the btp CLI. Using `btp assign` and hitting Tab for autocompletion, we can see that the "assign" action works with role-collections in the "security" group, and entitlements in the "accounts" group. Similarly, we can see via autocompletion that the "unassign" action works exclusively with role-collections in the "security" group. For each of the actions there's a corresponding option `--to-user` or `--from-user`, depending on the direction.
+
+## API Packages on SAP API Business Hub
+
+It's important to understand how to find one's way around APIs on the hub, so this slide and the next one just explain the '10,000 feet view', zooming down into the "Core Services for SAP BTP" API package.
+
+## API Package : Core Services for SAP BTP : API : Accounts Service
+
+The title of this slide reflects the breadcrumbs that lead us to a specific API, the "Accounts Service" API. Note that an API can and usually does have multiple endpoints (URL paths) here, so don't confuse a specific URL with an API.
+
+The URL indicated with the 👉 pointer will take us to the "Core Services for SAP BTP" level in the SAP API Business Hub, from where we can descend a level into the details for the specific "Accounts Service" API.
+
+## Calling an API protected with OAuth
+
+Most APIs are protected with OAuth, specifically OAuth 2.0. There's a general flow which is as follows:
+
+1. Create an instance of a service, with a service plan that is appropriate for the requirement
+1. From this instance, a service key, aka "binding", can be created
+1. Using information in the binding, an access token can be requested
+1. The access token obtained can be used to authenticate the API call
+
+Which service is required depends on the API you want to call, and is usually described in the corresponding documentation. For example, there is an SAP Help Portal document linked from the Accounts Service API overview page. The title of this document is [Account Administration Using APIs of the SAP Cloud Management Service [Feature Set B]](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html) and the first sentence tells us what service is required:
+
+> Provides information about using the APIs of the SAP Cloud Management service for SAP BTP (technical name: cis) to manage some of the administrative operations in your accounts.
+
+Note also that different service plans will provide different levels of access (scope), so the right one needs to be used in the first step. This information is also usually found in the same documentation.
