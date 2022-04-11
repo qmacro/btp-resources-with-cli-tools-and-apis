@@ -34,6 +34,14 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 ~~~
 ```
 
+## Content
+
+* The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][1]
+* As well as these slides (which are in very readable Markdown) there are also detailed [notes][2]
+
+[1]: https://github.com/qmacro/mastering-sap-2022/
+[2]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
+
 ---
 
 # Setting the scene
@@ -70,20 +78,6 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 - CLI tools and APIs are great for MACHINES 🤖
 
 [1]: https://blogs.sap.com/2018/04/09/monday-morning-thoughts-a-cloud-native-smell/
----
-
-# What we're going to look at
-
-- A general overview of resources
-- Essential CLI tools
-- APIs that cover SAP BTP core services
-
-Note:
-
-The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][1]
-
-[1]: https://github.com/qmacro/mastering-sap-2022/
-
 ---
 
 # Resources
