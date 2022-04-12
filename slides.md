@@ -36,11 +36,11 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 ## Content
 
-* The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][1]
-* As well as these slides (which are in very readable Markdown) there are also detailed [notes][2]
+* The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][repo]
+* As well as these slides (which are in very readable Markdown) there are also detailed [notes][repo-notes]
 
-[1]: https://github.com/qmacro/mastering-sap-2022/
-[2]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
+[repo]: https://github.com/qmacro/mastering-sap-2022/
+[repo-notes]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
 
 👉 `https://github.com/qmacro/mastering-sap-2022`
 ---
@@ -68,7 +68,7 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 # The next level
 
 - Hyperscaler platforms, where resources co-exist
-- Cattle not pets - see [Monday morning thoughts: a cloud native smell][1]
+- Cattle not pets - see [Monday morning thoughts: a cloud native smell][cloud-native-smell]
 - Automation is key for the next stages in your cloud journey
 - Facilities beyond the Cockpit for managing SAP BTP resources
 
@@ -78,7 +78,8 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 - CLI tools and APIs are great for MACHINES 🤖
 
-[1]: https://blogs.sap.com/2018/04/09/monday-morning-thoughts-a-cloud-native-smell/
+[cloud-native-smell]: https://blogs.sap.com/2018/04/09/monday-morning-thoughts-a-cloud-native-smell/
+
 ---
 
 # Resources
@@ -108,34 +109,34 @@ Platform and runtime specific tools, plus tools to manipulate and explore data
 
 ## Platform and runtime
 
-- btp     [for managing SAP BTP resources][1]
-- smctl   [to interact with the SAP Service Manager][2]
-- kubectl [the main Kubernetes command line tool][3]
-- cf      [the Cloud Foundry command line tool][4]
+- btp     [for managing SAP BTP resources][btp]
+- smctl   [to interact with the SAP Service Manager][smctl]
+- kubectl [the main Kubernetes command line tool][kubectl]
+- cf      [the Cloud Foundry command line tool][cf]
 
 ## Data manipulation and exploration
 
-- jq      [the command line JSON processor][5]
-- yq      [the equivalent of jq for YAML][6]
-- ijq     [interactive jq][7]
-- fx      [terminal JSON viewer][8]
-- fzf     [a command line fuzzy finder][9]
+- jq      [the command line JSON processor][jq]
+- yq      [the equivalent of jq for YAML][yq]
+- ijq     [interactive jq][ijq]
+- fx      [terminal JSON viewer][fx]
+- fzf     [a command line fuzzy finder][fzf]
 
-[1]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/7c6df2db6332419ea7a862191525377c.html
-[2]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html
-[3]: https://kubernetes.io/docs/reference/kubectl/
-[4]: https://docs.cloudfoundry.org/cf-cli/
-[5]: https://stedolan.github.io/jq/
-[6]: https://github.com/mikefarah/yq
-[7]: https://sr.ht/~gpanders/ijq/
-[8]: https://github.com/antonmedv/fx
-[9]: https://github.com/junegunn/fzf
+[btp]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/7c6df2db6332419ea7a862191525377c.html
+[smctl]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/0107f3f8c1954a4e96802f556fc807e3.html
+[kubectl]: https://kubernetes.io/docs/reference/kubectl/
+[cf]: https://docs.cloudfoundry.org/cf-cli/
+[jq]: https://stedolan.github.io/jq/
+[yq]: https://github.com/mikefarah/yq
+[ijq]: https://sr.ht/~gpanders/ijq/
+[fx]: https://github.com/antonmedv/fx
+[fzf]: https://github.com/junegunn/fzf
 
 ---
 
 # APIs
 
-These are all available in the SAP API Business Hub package [Core Services for SAP BTP][1]
+These are all available in the SAP API Business Hub package [Core Services for SAP BTP][core-services-api-package]
 
 * Accounts Service
 * Entitlements Service
@@ -148,14 +149,14 @@ And also:
 
 * Service Manager
 
-[1]: https://api.sap.com/package/SAPCloudPlatformCoreServices/overview
+[core-services-api-package]: https://api.sap.com/package/SAPCloudPlatformCoreServices/overview
 
 ---
 
 # btp CLI
 
 * Available for all platforms
-* See also the [BTP Setup Automator][1]
+* See also the [BTP Setup Automator][btp-setup-automator]
 * Super comfortable and convenient
 * Usage: `btp [OPTIONS] ACTION [GROUP/OBJECT] [PARAMS]`
 
@@ -169,7 +170,7 @@ Like many CLI tools that support a wide array of resources, the btp CLI command 
 btp help all | grep -E '^\s+[a-z]+' | awk '{print $1}' | sort -u | paste -sd' ' | fold -s -w $(tput cols)
 ```
 
-[1]: https://github.com/SAP-samples/btp-setup-automator
+[btp-setup-automator]: https://github.com/SAP-samples/btp-setup-automator
 
 ---
 
@@ -296,11 +297,11 @@ btp --format json list accounts/environment-instance # (from getcfapiendpoint)
 ~~~
 ```
 
-Grouped endpoints are described in the [API Reference][1]
+Grouped endpoints are described in the [API Reference][accounts-service-api-ref]
 
 👉 `https://api.sap.com/package/SAPCloudPlatformCoreServices/rest`
 
-[1]: https://api.sap.com/api/APIAccountsService/resource
+[accounts-service-api-ref]: https://api.sap.com/api/APIAccountsService/resource
 
 ---
 
@@ -329,7 +330,7 @@ Service instance binding contains OAuth details. Use those to request an access 
 
 ## Requirements
 
-* Use **SAP Cloud Management Service** with **central** plan - see [documentation][1]
+* Use **SAP Cloud Management Service** with **central** plan - see [documentation][using-cloud-management-service]
 
 ## Tools
 
@@ -345,13 +346,13 @@ Service instance binding contains OAuth details. Use those to request an access 
 {"value":[{"guid":"cd76fdef-16f8-47a3-954b-cab6678cc24d","technicalName":"cd76fdef-16f8-47a3-954b-cab6678cc24d","displayName":"testsubaccount","globalAccountGUID":"fdce9323-d6e6-42e6-8df0-5e501c90a2be","parentGUID":"fdce9323-d6e6-42e6-8df0-5e501c90a2be",...}]}
 ```
 
-[1]: https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html
+[using-cloud-management-service]: https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html
 
 ---
 
 # SAP Service Manager - overview
 
-Facilitates brokering services across runtimes, based on the open source [Peripli][1]
+Facilitates brokering services across runtimes, based on the open source [Peripli][peripli]
 
 ```
 ┌────────────────┐                                  ┌──────────┐
@@ -369,7 +370,7 @@ Facilitates brokering services across runtimes, based on the open source [Peripl
 
 Think `cf`'s services facility, but cross-environment, allowing consumption of services from anywhere, anywhere (Cloud Foundry, Kyma / Kubernetes, etc).
 
-[1]: https://peripli.github.io/
+[peripli]: https://peripli.github.io/
 
 ---
 
@@ -379,7 +380,7 @@ This is itself a service for viewing & managing service offerings, plans, etc.
 
 ## Via the smctl CLI
 
-* Install available from the open source project and [referenced in SAP Help Portal][1]
+* Install available from the open source project and [referenced in SAP Help Portal][smctl-help]
 * Commands such as `list-platforms`, `register-broker`, `provision`, `update-instance`
 
 ## Via the btp CLI
@@ -388,15 +389,16 @@ This is itself a service for viewing & managing service offerings, plans, etc.
 
 ## Via the API
 
-* Described in SAP API Business Hub - [Service Manager][2]
-* Documented in SAP Help Portal - [Working with SAP Service Manager APIs][3]
-* Protected via OAuth, requires SAP Service Manager instance with [appropriate plan][4]
+* Described in SAP API Business Hub - [Service Manager][service-manager-api]
+* Documented in SAP Help Portal - [Working with SAP Service Manager APIs][service-manager-api-docu]
+* Protected via OAuth, requires SAP Service Manager instance with [appropriate plan][service-manager-api-plans]
 
 
-[1]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/93532bd72117429bb823a46ef2ddd003.html
-[2]: https://api.sap.com/api/APIServiceManagment/overview
-[3]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/4e19b11211fe4ca2a266d3fdd4a72188.html
-[4]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/917a8a7c926444cf99d0230c82db1831.html
+[smctl-help]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/93532bd72117429bb823a46ef2ddd003.html
+[service-manager-api]: https://api.sap.com/api/APIServiceManagment/overview
+[service-manager-api-docu]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/4e19b11211fe4ca2a266d3fdd4a72188.html
+[service-manager-api-plans]: https://help.sap.com/viewer/09cc82baadc542a688176dce601398de/Cloud/en-US/917a8a7c926444cf99d0230c82db1831.html
+
 ---
 
 # Wrapping up
@@ -426,7 +428,7 @@ Blog posts
 
 # Further viewing
 
-Videos from the `Hands-on SAP Dev` [show][1]
+Videos from the `Hands-on SAP Dev` [show][hands-on-sap-dev-show]
 
 * [Getting started with btp, the SAP Business Technology Platform CLI](https://www.youtube.com/watch?v=mhk6Kot-Ays&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=9)
 * [Logging in and configuration with btp, the SAP Business Technology Platform CLI](https://www.youtube.com/watch?v=jN_4J8tmmTo&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=8)
@@ -436,4 +438,4 @@ Videos from the `Hands-on SAP Dev` [show][1]
 * [Developer Keynote btp CLI scripting part 2 - obtaining and parsing JSON output with jq](https://www.youtube.com/watch?v=_tQWo2bzFzE&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=4)
 * [Fun with SAP BTP Cloud Management Service and Core Services APIs](https://www.youtube.com/watch?v=KiPJJHmEbgc&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=3)
 
-[1]: https://blogs.sap.com/2020/11/09/an-overview-of-sap-developers-video-content/#shows
+[hands-on-sap-dev-show]: https://blogs.sap.com/2020/11/09/an-overview-of-sap-developers-video-content/#shows
