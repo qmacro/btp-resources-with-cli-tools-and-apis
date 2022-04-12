@@ -43,6 +43,7 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 [repo-notes]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
 
 👉 `https://github.com/qmacro/mastering-sap-2022`
+
 ---
 
 # Setting the scene
