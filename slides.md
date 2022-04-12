@@ -218,10 +218,10 @@ The other actions (_create_, _delete_, _list_, _get_ etc) are performed on objec
 
 * `btp list security/user`
 * `btp get security/user qmacro+blue@gmail.com`
+* `btp --format json get security/user qmacro+blue@gmail.com`
 * `btp list security/role-collection`
 * `btp --format json list security/role-collection`
 * `btp --format json list security/role-collection | fx`
-* `btp --format json list security/role-collection | jq -r .[].name`
 * `btp --format json list security/role-collection | jq -r .[].name | fzf`
 
 ### Assigning and unassigning a role collection
