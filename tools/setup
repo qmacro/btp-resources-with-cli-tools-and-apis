@@ -39,7 +39,9 @@ main() {
 
   # Remove any existing JSON files from the dir where this script is
   # shellcheck disable=SC2086
-  rm -i $HERE/*.json
+  [[ $(find $HERE -name '*.json' | wc -l) -gt 0 ]] && rm -i $HERE/*.json
+
+  return 0
 
 }
 
