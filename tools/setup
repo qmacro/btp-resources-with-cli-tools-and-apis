@@ -36,6 +36,11 @@ main() {
 
   # Remove any existing CIS service instance & keys
   dsik "$SERVICEINSTANCE"
+
+  # Remove any existing JSON files from the dir where this script is
+  # shellcheck disable=SC2086
+  rm -i $HERE/*.json
+
 }
 
 main "$@"
