@@ -42,6 +42,7 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 [1]: https://github.com/qmacro/mastering-sap-2022/
 [2]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
 
+👉 `https://github.com/qmacro/mastering-sap-2022`
 ---
 
 # Setting the scene
@@ -376,7 +377,7 @@ Think `cf`'s services facility, but cross-environment, allowing consumption of s
 
 # SAP Service Manager - interaction
 
-This is itself a service via which one can view & manage service offerings, plans, etc.
+This is itself a service for viewing & managing service offerings, plans, etc.
 
 ## Via the smctl CLI
 
