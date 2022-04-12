@@ -18,7 +18,7 @@ The two facilities beyond the Cockpit have been sitting there ready for you, jus
 
 ## Resources
 
-You'll want to interact with all these resources to maintaining and managing them, and you'll certainly also want to report on them too, as well as have an overview of what you've got and how things relate.
+You'll want to interact with all these resources for maintaining and managing them, and you'll certainly also want to report on them too, as well as have an overview of what you've got and how things relate.
 
 ## CLI tools
 
@@ -77,7 +77,7 @@ We can see another example of some `jq` expressions that are used to extract sub
 
 ## Exploring the btp CLI (cntd)
 
-As we can see, `fx` is also a nice tool to explore JSON output. And with it we can see that the structure of the JSON for the "security/role-collection" resource is an array of objects, one for each role-collection. So we can use a bit of `jq` to extract the role collection names from that structure: `.[].name` (the `-r` option tells `jq` not to try to output JSON, but just raw data). The flat list then can be nicely fed into `fzf`.
+As we can see, `fx` is also a nice tool to explore JSON output. And with it we can see that the structure of the JSON for the "security/role-collection" resource is an array of objects, one for each role-collection. So we can use a bit of `jq` to extract the role-collection names from that structure: `.[].name` (the `-r` option tells `jq` not to try to output JSON, but just raw data). The flat list then can be nicely fed into `fzf`.
 
 The assignment and unassignment of role-collections to and from users can also be done with the btp CLI. Using `btp assign` and hitting Tab for autocompletion, we can see that the "assign" action works with role-collections in the "security" group, and entitlements in the "accounts" group. Similarly, we can see via autocompletion that the "unassign" action works exclusively with role-collections in the "security" group. For each of the actions there's a corresponding option `--to-user` or `--from-user`, depending on the direction.
 
@@ -100,7 +100,7 @@ Most APIs are protected with OAuth, specifically OAuth 2.0. There's a general fl
 1. Using information in the binding, an access token can be requested
 1. The access token obtained can be used to authenticate the API call
 
-Which service is required depends on the API you want to call, and is usually described in the corresponding documentation. For example, there is an SAP Help Portal document linked from the Accounts Service API overview page. The title of this document is [Account Administration Using APIs of the SAP Cloud Management Service [Feature Set B]](https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html) and the first sentence tells us what service is required:
+Which service is required depends on the API you want to call, and is usually described in the corresponding documentation. For example, there is an SAP Help Portal document linked from the Accounts Service API overview page. The title of this document is [Account Administration Using APIs of the SAP Cloud Management Service [Feature Set B]](https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html) and the first sentence tells us what service is required:
 
 > Provides information about using the APIs of the SAP Cloud Management service for SAP BTP (technical name: cis) to manage some of the administrative operations in your accounts.
 

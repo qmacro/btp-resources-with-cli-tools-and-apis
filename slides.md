@@ -329,7 +329,7 @@ Service instance binding contains OAuth details. Use those to request an access 
 
 ## Requirements
 
-* Use **SAP Cloud Management Service** with **central** plan - see [documentation][3]
+* Use **SAP Cloud Management Service** with **central** plan - see [documentation][1]
 
 ## Tools
 
@@ -345,9 +345,7 @@ Service instance binding contains OAuth details. Use those to request an access 
 {"value":[{"guid":"cd76fdef-16f8-47a3-954b-cab6678cc24d","technicalName":"cd76fdef-16f8-47a3-954b-cab6678cc24d","displayName":"testsubaccount","globalAccountGUID":"fdce9323-d6e6-42e6-8df0-5e501c90a2be","parentGUID":"fdce9323-d6e6-42e6-8df0-5e501c90a2be",...}]}
 ```
 
-[1]: https://api.sap.com/api/APIAccountsService/resource
-[2]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/3670474a58c24ac2b082e76cbbd9dc19.html
-[3]: https://help.sap.com/products/BTP/65de2977205c403bbc107264b8eccf4b/a508b724bf6d457ca7ac024b8e4b8457.html
+[1]: https://help.sap.com/docs/BTP/65de2977205c403bbc107264b8eccf4b/17b6a171552544a6804f12ea83112a3f.html
 
 ---
 
