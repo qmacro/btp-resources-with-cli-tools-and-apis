@@ -13,11 +13,6 @@ Level up your SAP BTP resource management skills with command line tools and API
 
 DJ Adams, Developer Advocate at SAP
 
-# Topics
-
-* Migrating to the Cloud
-* Skills, Methodologies and Ways of Working
-
 # What we'll learn together
 
 In this session we'll learn what resources there are to manage on the SAP Business Technology Platform (SAP BTP), and how to manage them with tools and APIs you can build into automated mechanisms. We'll discover what tools are available, what they're used for and how to use them.
@@ -36,13 +31,13 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 ## Content
 
-* The entire content of this talk is available online in a GitHub repository: [qmacro/mastering-sap-2022][repo]
+* The entire content of this talk is available online in a GitHub repository: [qmacro/btp-resources-with-cli-tools-and-apis][repo]
 * As well as these slides (which are in very readable Markdown) there are also detailed [notes][repo-notes]
 
-[repo]: https://github.com/qmacro/mastering-sap-2022/
-[repo-notes]: https://github.com/qmacro/mastering-sap-2022/blob/main/notes.md
+[repo]: https://github.com/qmacro/btp-resources-with-cli-tools-and-apis/
+[repo-notes]: https://github.com/qmacro/btp-resources-with-cli-tools-and-apis/blob/main/notes.md
 
-👉 `https://github.com/qmacro/mastering-sap-2022`
+👉 `https://github.com/qmacro/btp-resources-with-cli-tools-and-apis`
 
 ---
 
