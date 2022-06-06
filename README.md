@@ -1,24 +1,17 @@
-# Mastering SAP 2022
+# BTP Resources with CLI and APIs
 
-## Title
+## Description
 
-Level up your SAP BTP resource management skills with command line tools and APIs.
+This repository contains material related to talks on managing resources on the SAP Business Technology Platform (BTP) with tools on the command line interface (CLI), and with APIs.
 
-## Topics
+## Context
 
-* Migrating to the Cloud
-* Skills, Methodologies and Ways of Working
+You've committed to the cloud, and started to explore BTP via the cockpit's UI. But now you want to get to the next level to understand and manage your resources efficiently, aligned with the rest of your devops workflows.
 
-## Abstract
+To get to that next level, you need to learn what resources there are to manage, and how to manage them with powerful tools that you can build into automated mechanisms. The command line tools and APIs are where the rubber meets the road, and you need to be in the driving seat.
 
-You've committed to the cloud, and started to explore the SAP Business Technology Platform via the cockpit's UI. But now you want to get to the next level to understand and manage your resources efficiently, aligned with the rest of your devops workflows.
+If you're interested in levelling up in this space, and embracing command line tools and APIs that give you superpowers for your SAP BTP environment, this content is for you.
 
-In this session -- which sits at the meeting point between developers, devops, developer experience and the SAP Business Technology Platform (BTP) -- you'll learn what resources there are to manage, and how to manage them with powerful tools that you can build into automated mechanisms. The command line tools and APIs are where the rubber meets the road, and you need to be in the driving seat.
+## Slides material
 
-You'll come away with an understanding of what tools are available, what they're used for and where to use them. You'll also learn how to combine them with tools in the wider ecosphere to help you explore, create and manipulate resources on SAP BTP.
-
-If you're interested in levelling up in this space, and embracing command line tools and APIs that give you superpowers for your SAP BTP environment, this session is for you.
-
-## Slides content
-
-The presentation slides are in [slides.md](slides.md) and can be presented with the excellent [terminal slides](https://github.com/maaslalani/slides) tool, or simply read as rendered Markdown. Some diagrams are rendered on the fly via `graph-easy`, others are created with [ASCIIFlow](https://github.com/lewish/asciiflow). There are also notes that relate to the slides, in [notes.md](notes.md).
+Presentation slides in this repository are in Markdown and can be presented with the excellent [terminal slides](https://github.com/maaslalani/slides) tool, or simply read as rendered Markdown. Some diagrams are rendered on the fly via `graph-easy`, others are created with [ASCIIFlow](https://github.com/lewish/asciiflow).
