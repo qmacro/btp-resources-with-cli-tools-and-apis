@@ -7,7 +7,7 @@ paging: "%d / %d"
 
 # Talk
 
-Level up your SAP BTP resource management skills with command line tools and APIs.
+Accessing SAP BTP resources with APIs and the CLI
 
 # Speaker
 
@@ -15,7 +15,7 @@ DJ Adams, Developer Advocate at SAP
 
 # What we'll learn together
 
-In this session we'll learn what resources there are to manage on the SAP Business Technology Platform (SAP BTP), and how to manage them with tools and APIs you can build into automated mechanisms. We'll discover what tools are available, what they're used for and how to use them.
+In this session we'll learn what resources there are to manage on the SAP Business Technology Platform (SAP BTP), and how to manage them with command line tools & APIs that you can build into automated mechanisms. We'll look at what tools are available, what they're used for and how to use them.
 
 ---
 
