@@ -31,13 +31,11 @@ In this session we'll learn what resources there are to manage on the SAP Busine
 
 ## Content
 
-* The entire content of this talk is available online in a GitHub repository: [qmacro/btp-resources-with-cli-tools-and-apis][repo]
+* This talk's content is available online in a GitHub repo: [qmacro/btp-resources-with-cli-tools-and-apis][repo]
 * As well as these slides (which are in very readable Markdown) there are also detailed [notes][repo-notes]
 
 [repo]: https://github.com/qmacro/btp-resources-with-cli-tools-and-apis/
 [repo-notes]: https://github.com/qmacro/btp-resources-with-cli-tools-and-apis/blob/main/notes.md
-
-👉 `https://github.com/qmacro/btp-resources-with-cli-tools-and-apis`
 
 ---
 
