@@ -17,12 +17,17 @@ fileprop() {
 
 main() {
 
-  local endpoint
+  local endpoint method=GET
+  if [[ $# = 2 ]]; then
+    method=$1
+    shift
+  fi
   endpoint="${1:?Specify versioned endpoint e.g. /accounts/v1/subaccounts}"
   endpoint="${endpoint#/}"
 
   curl \
     --header "Authorization: Bearer $(fileprop token .access_token)" \
+    --request "$method" \
     --location \
     --silent \
     --fail \
