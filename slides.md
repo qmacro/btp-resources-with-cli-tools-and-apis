@@ -7,7 +7,7 @@ paging: "%d / %d"
 
 # Talk
 
-Accessing SAP BTP resources with APIs and the CLI
+First steps towards automating your SAP BTP cloud based systems and resources
 
 # Speaker
 
@@ -15,7 +15,7 @@ DJ Adams, Developer Advocate at SAP
 
 # What we'll learn together
 
-In this session we'll learn what resources there are to manage on the SAP Business Technology Platform (SAP BTP), and how to manage them with command line tools & APIs that you can build into automated mechanisms. We'll look at what tools are available, what they're used for and how to use them.
+An overview of what the SAP Business Technology Platform (BTP) really is beneath the surface, what it's constructed from, and how to navigate and understand it using the Cockpit. Then, going a little deeper, a quick tour of CLI tools and APIs for the BTP resources that can be used to build automations that work for you.
 
 ---
 
