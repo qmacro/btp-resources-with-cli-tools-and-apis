@@ -442,7 +442,7 @@ Videos from the `Hands-on SAP Dev` [show][hands-on-sap-dev-show]
 
 # Example: Creation & deletion of directory (1/2)
 
-Here's a further example of using the btp CLI and Accounts Service API, to create (with the btp CLI) and subsequently delete (with the API) a directory.
+Using the btp CLI & Accounts Service API, to create and subsequently delete a directory.
 
 ## Using the btp CLI
 
@@ -462,7 +462,7 @@ List existing directories and create a new one with the btp CLI.
 
 # Example: Creation & deletion of directory (2/2)
 
-Here's a further example of using the btp CLI and Accounts Service API, to create (with the btp CLI) and subsequently delete (with the API) a directory.
+Using the btp CLI & Accounts Service API, to create and subsequently delete a directory.
 
 ## Using the Accounts Service API
 
@@ -475,7 +475,5 @@ See earlier slides on creating an instance of the `cis` service with the `global
 ### Make the call, with the DELETE method
 
 * Identify the appropriate endpoint via [api.sap.com/api/APIAccountsService/resource](https://api.sap.com/api/APIAccountsService/resource)
-* Make a note of the directory's GUID
 * Use the custom script `tools/callaccountsserviceapiendpoint` with two parameters:
-  * `DELETE`
-  * `/accounts/v1/directories/<guid>`
+  * `DELETE` `/accounts/v1/directories/<guid>`
