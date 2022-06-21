@@ -7,7 +7,7 @@ paging: "%d / %d"
 
 # Talk
 
-Accessing SAP BTP resources with APIs and the CLI
+First steps towards automating your SAP BTP cloud based systems and resources
 
 # Speaker
 
@@ -15,7 +15,7 @@ DJ Adams, Developer Advocate at SAP
 
 # What we'll learn together
 
-In this session we'll learn what resources there are to manage on the SAP Business Technology Platform (SAP BTP), and how to manage them with command line tools & APIs that you can build into automated mechanisms. We'll look at what tools are available, what they're used for and how to use them.
+An overview of what the SAP Business Technology Platform (BTP) really is beneath the surface, what it's constructed from, and how to navigate and understand it using the Cockpit. Then, going a little deeper, a quick tour of CLI tools and APIs for the BTP resources that can be used to build automations that work for you.
 
 ---
 
@@ -433,3 +433,47 @@ Videos from the `Hands-on SAP Dev` [show][hands-on-sap-dev-show]
 * [Fun with SAP BTP Cloud Management Service and Core Services APIs](https://www.youtube.com/watch?v=KiPJJHmEbgc&list=PL6RpkC85SLQABOpzhd7WI-hMpy99PxUo0&index=3)
 
 [hands-on-sap-dev-show]: https://blogs.sap.com/2020/11/09/an-overview-of-sap-developers-video-content/#shows
+
+---
+
+# Appendices
+
+---
+
+# Example: Creation & deletion of directory (1/2)
+
+Using the btp CLI & Accounts Service API, to create and subsequently delete a directory.
+
+## Using the btp CLI
+
+List existing directories and create a new one with the btp CLI.
+
+### List current directories
+
+* With `btp get accounts/global-account --show-hierarchy` (aliased to `btphier`)
+* Or with the sample script `tools/btpdirs` that pulls out directories from the JSON representation
+
+### Create new directory
+
+* Invoke `btp create accounts/directory --display-name <name> --parent-directory <guid>`
+* Check it's there with one of the approaches above
+
+---
+
+# Example: Creation & deletion of directory (2/2)
+
+Using the btp CLI & Accounts Service API, to create and subsequently delete a directory.
+
+## Using the Accounts Service API
+
+Delete that directory with an API call to an Accounts Service API endpoint.
+
+### Ensure there's a binding available for the cis service
+
+See earlier slides on creating an instance of the `cis` service with the `global` plan, generating binding information and requesting a token.
+
+### Make the call, with the DELETE method
+
+* Identify the appropriate endpoint via [api.sap.com/api/APIAccountsService/resource](https://api.sap.com/api/APIAccountsService/resource)
+* Use the custom script `tools/callaccountsserviceapiendpoint` with two parameters:
+  * `DELETE` `/accounts/v1/directories/<guid>`
